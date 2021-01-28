@@ -38,7 +38,7 @@ jobs:
           dotnet-version: 5.0.101
           source-url: https://nuget.pkg.github.com/MauricioMatsu/index.json
         env: 
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NUGET_AUTH_TOKEN: ${{secrets.NUGET_API_KEY}}
 
       - name: Geração do package
         run: dotnet pack ${{ env.CSPROJ }} -c Release -o out
