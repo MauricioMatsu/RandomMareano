@@ -19,7 +19,12 @@ jobs:
   build:
     env:
       CSPROJ: ./RandomMareanoLibrary/RandomMareanoLibrary.csproj
-    # The type of runner that the job will run on
+      # GitHub Packages Feed settings
+      GITHUB_FEED: https://nuget.pkg.github.com/MauricioMatsu/
+      GITHUB_USER: MauricioMatsu
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
+      # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -38,4 +43,7 @@ jobs:
       - name: Push no NuGet
         run: |
           cd out
-          dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source ${{ secrets.NUGET_SERVER }} --skip-duplicate
+          for f in ./nupkg/*.nupkg
+          do
+            curl -vX PUT -u "$GITHUB_USER:$GITHUB_TOKEN" -F package=@$f $GITHUB_FEED
+          done
