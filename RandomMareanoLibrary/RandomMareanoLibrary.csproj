@@ -10,7 +10,7 @@
     <Description>
         Biblioteca para geração randomica de dados cadastrais
     </Description>
-    <RepositoryUrl>https://github.com/MauricioMatsu/RandomMareanoLibrary.git</RepositoryUrl>
+    <RepositoryUrl>https://nuget.pkg.github.com/MauricioMatsu/RandomMareanoLibrary.git</RepositoryUrl>
   </PropertyGroup>
 
 </Project>
