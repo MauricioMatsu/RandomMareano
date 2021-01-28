@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <PackageId>RandomMareanoLibrary</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Mauricio Hajime Matsushita Nakasato</Authors>
+    <Company>Mareano</Company>
+    <PackageTags>NuGet;.NET 5;Classlib;GitHub;Actions</PackageTags>
+    <Description>
+        Biblioteca para geração randomica de dados cadastrais
+    </Description>
+    <RepositoryUrl>https://github.com/MauricioMatsu/RandomMareanoLibrary.git</RepositoryUrl>
   </PropertyGroup>
 
 </Project>
