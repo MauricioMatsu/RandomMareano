@@ -36,10 +36,6 @@ jobs:
         run: dotnet pack ${{ env.CSPROJ }} -c Release -o out
         
       - name: Push no NuGet
-        uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
-        with:
-          nupkg-path:  out/RandomMareanoLibrary.1.0.0.nupkg
-          repo-owner:  MauricioMatsu
-          gh-user:  'MauricioMatsu'
-          token:  ${{ secrets.GITHUB_TOKEN }}
-        
+        run: |
+          cd out
+          dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source ${{ secrets.NUGET_SERVER }} --skip-duplicate
