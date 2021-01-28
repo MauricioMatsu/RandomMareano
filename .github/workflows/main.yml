@@ -38,7 +38,7 @@ jobs:
       - name: Push no NuGet
         uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
         with:
-          nupkg-path:  out
+          nupkg-path:  out/RandomMareanoLibrary.1.0.0.nupkg
           repo-owner:  MauricioMatsu
           gh-user:  'MauricioMatsu'
           token:  ${{ secrets.GITHUB_TOKEN }}
