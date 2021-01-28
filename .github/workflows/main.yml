@@ -43,7 +43,10 @@ jobs:
       - name: Geração do package
         run: dotnet pack ${{ env.CSPROJ }} -c Release -o out
         
-      - name: Push generated package to GitHub registry
+      - name: Push to GitHub Feed
         run: |
           cd out
-          dotnet nuget push *.nupkg --skip-duplicate --no-symbols true
+          for f in *.nupkg
+          do
+            curl -vX PUT -u "$GITHUB_USER:$GITHUB_TOKEN" -F package=@$f $GITHUB_FEED
+          done
