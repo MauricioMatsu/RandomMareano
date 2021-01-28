@@ -36,14 +36,12 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 5.0.101
+          source-url: https://nuget.pkg.github.com/MauricioMatsu/index.json
+        env: 
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Geração do package
         run: dotnet pack ${{ env.CSPROJ }} -c Release -o out
         
-      - name: Push no NuGet
-        run: |
-          cd out
-          for f in ./nupkg/*.nupkg
-          do
-            curl -vX PUT -u "$GITHUB_USER:$GITHUB_TOKEN" -F package=@$f $GITHUB_FEED
-          done
+      - name: Push generated package to GitHub registry
+        run: dotnet nuget push ./<project>/out/*.nupkg --skip-duplicate --no-symbols true
