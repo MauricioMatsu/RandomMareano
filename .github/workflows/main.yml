@@ -48,5 +48,5 @@ jobs:
           cd out
           for f in *.nupkg
           do
-            curl -vX PUT -u "$GITHUB_USER:$GITHUB_TOKEN" -H @{'apikey' = '$GITHUB_TOKEN'} -F package=@$f $GITHUB_FEED
+            curl -vX PUT -u "$GITHUB_USER:$GITHUB_TOKEN" -H @{'api-key' = '$GITHUB_TOKEN'} -F package=@$f $GITHUB_FEED
           done
