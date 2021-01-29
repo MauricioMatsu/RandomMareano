@@ -25,7 +25,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
       # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -43,10 +43,7 @@ jobs:
       - name: Geração do package
         run: dotnet pack ${{ env.CSPROJ }} -c Release -o out
         
-      - name: Push to GitHub Feed
+      - name: Push no NuGet
         run: |
           cd out
-          for f in *.nupkg
-          do
-            curl -vX PUT -u "$GITHUB_USER:$GITHUB_TOKEN" -H @{'api-key' = '$GITHUB_TOKEN'} -F package=@$f $GITHUB_FEED
-          done
+          dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source ${{ secrets.NUGET_SERVER }} --skip-duplicate
