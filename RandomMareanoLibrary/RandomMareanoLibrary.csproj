@@ -11,7 +11,6 @@
         Biblioteca para geração randomica de dados cadastrais
     </Description>
     <RepositoryUrl>https://github.com/MauricioMatsu/RandomMareanoLibrary.git</RepositoryUrl>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
 </Project>
